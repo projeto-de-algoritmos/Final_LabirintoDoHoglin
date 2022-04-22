@@ -1,0 +1,107 @@
+#hoglin {
+    margin-top: 50px;
+    width: 400;
+    height: 400;
+}
+
+#game {
+    margin: auto;
+    box-shadow: 0 0 2em black;
+}
+
+table {
+    border-spacing: 0px;
+    border: 2px black gray;
+}
+
+img {
+    width: 21px;
+    height: 20px;
+}
+
+main {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    font-size: large;
+    padding: 10px;
+    margin: 0px 20px 0px 20px;
+}
+
+body {
+    background-image: linear-gradient(whitesmoke, lightgray, grey);
+}
+
+* {
+    font-family: 'Minecraft', sans-serif;
+}
+
+.celula {
+    width: 25px;
+    height: 25px;
+    border: 1px gray solid;
+    text-align: center;
+}
+
+@keyframes bestCellAnimation {
+    50% {
+        transform: scale(2);
+        box-shadow: inset 0 0 1em green, 0 0 1em red;
+    }
+}
+
+.focusAnimation {
+    text-align: center;
+    animation-name: bestCellAnimation;
+}
+
+.disabled {
+    display: none;
+}
+
+.actived {
+    display: inline-block;
+}
+
+#cabecalho {
+    text-align: center;
+}
+
+#collectGameScore{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.score{
+    margin-right: 50px;
+}
+
+.tabela {
+    margin: 40px;
+    flex-grow: 1;
+    border-spacing: 10px;
+    border: 1px black solid;
+}
+
+.tabela caption {
+    font-size: 20px;
+    padding: 1px;
+    border: 1px black solid;
+}
+
+.tabela td {
+    vertical-align: bottom;
+    text-align: center;
+    font-size: 18px;
+}
