@@ -1,8 +1,8 @@
 class FreeGame extends Game {
-    constructor(timeout, map, volume, playerCoord, inteligentEnemyCoord, enemiesCoords, introDuration) {
+    constructor(timeout, map, volume, player, inteligentEnemyCoord, enemiesCoords, introDuration) {
         super(timeout, map, volume, introDuration);
         this.score = 0;
-        this.player = new Player(playerCoord, map);
+        this.player = player;
         this.star = new Star(map);
         this.inteligentEnemy = new InteligentEnemy(inteligentEnemyCoord, map);
         this.enemies = enemiesCoords.map(ec => new Enemy(ec, map));

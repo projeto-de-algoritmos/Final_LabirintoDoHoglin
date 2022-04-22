@@ -3,9 +3,15 @@ const SLOW_TIME = [2, 5, 10]
 
 class Map {
     constructor(mapData) {
+        this.reset(mapData);
+        this.gameElement = window.document.querySelector("#game");
+    }
+
+    reset(mapData) {
         this.data = mapData.data;
         this.width = mapData.width;
         this.height = mapData.height;
+        this.mapHtml = this.generateMapHtml(mapData);
     }
 
     isBlockFree(x, y) {
@@ -23,16 +29,7 @@ class Map {
     update(){}
 
     render() {
-        let html = ''
-        for (let row = 0; row < this.height; row++) {
-            html += '<tr>'
-            for (let column = 0; column < this.width; column++) {
-                let color = COLORS[this.getBlock(row, column)];
-                html += `<td id="${this.getID(row, column)}" class="celula"style="background-color: ${color}"></td>`
-            }
-            html += '</tr>'
-        }
-        window.document.querySelector("#game").innerHTML = html;
+        this.gameElement.innerHTML = this.mapHtml;
     }
 
     getBlock(x, y) {
@@ -67,4 +64,16 @@ class Map {
         return SLOW_TIME[this.getBlock(x, y) - 2];
     }
 
+    generateMapHtml() {
+        let html = ''
+        for (let row = 0; row < this.height; row++) {
+            html += '<tr>'
+            for (let column = 0; column < this.width; column++) {
+                let color = COLORS[this.getBlock(row, column)];
+                html += `<td id="${this.getID(row, column)}" class="celula"style="background-color: ${color}"></td>`
+            }
+            html += '</tr>'
+        }
+        return html;
+    }
 }

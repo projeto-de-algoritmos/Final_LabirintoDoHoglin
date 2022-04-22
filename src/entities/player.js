@@ -2,15 +2,22 @@ class Player {
 
     constructor(coord, map) {
         this.map = map;
+        this.reset(coord);        
+        this.listenKeys();
+    }
+
+    reset(coord) {
         this.x = coord.x;
         this.y = coord.y;
+        this._reset();
+    }
+    _reset() {
         this.slow = 0;
         this.sack = 0;
         this.vel = {
             x: 1,
             y: 0
         }
-        this.listenKeys();
     }
 
     update() {

@@ -1,5 +1,5 @@
 class CollectGame extends Game {
-    constructor(playerName, accumulateScore, timeout, map, volume, playerCoord, inteligentEnemyCoord, enemiesCoords, starsAttributes, starsCount, totalSpace, introDuration) {
+    constructor(playerName, accumulateScore, timeout, map, volume, player, inteligentEnemyCoord, enemiesCoords, starsAttributes, starsCount, totalSpace, introDuration) {
         super(timeout, map, volume, introDuration);
 
         this.header = this.createHeader();
@@ -13,7 +13,7 @@ class CollectGame extends Game {
         this.renderHighscoreTable();
 
         this.playerName = playerName;
-        this.player = new Player(playerCoord, map);
+        this.player = player;
         this.inteligentEnemy = new InteligentEnemy(inteligentEnemyCoord, map);
         this.enemies = enemiesCoords.map(ec => new Enemy(ec, map));
         this.stars = this.createStars(starsAttributes, starsCount);
