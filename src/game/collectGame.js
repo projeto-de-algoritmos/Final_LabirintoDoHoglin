@@ -1,5 +1,10 @@
 class CollectGame extends Game {
-    constructor(playerName, accumulateScore, timeout, map, volume, player, inteligentEnemyCoord, enemiesCoords, starsAttributes, starsCount, totalSpace, introDuration) {
+    constructor(
+        playerName, accumulateScore, timeout,
+        map, volume, player, inteligentEnemyCoord,
+        enemiesCoords, starsAttributes, starsCount,
+        totalSpace, introDuration, knapsack
+    ) {
         super(timeout, map, volume, introDuration);
 
         this.header = this.createHeader();
@@ -23,7 +28,7 @@ class CollectGame extends Game {
 
         this.objects.push(...this.stars, this.player, ...this.enemies);
 
-        [this.bestValue, this.bestStars] = knapsack(totalSpace, this.stars);
+        [this.bestValue, this.bestStars] = knapsack.execute(totalSpace, this.stars);
     }
 
     startAnimation() {

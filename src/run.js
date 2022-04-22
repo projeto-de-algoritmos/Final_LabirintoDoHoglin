@@ -43,9 +43,11 @@ let playerName;
 let accumulateScore = {
     value: 0,
 }
-let starsCount = 9;
-let totalSpace = 50;
-let collectGame;
+let starsCount = 5;
+let totalSpace = 20;
+
+let knapsack = new PDKnapsack();
+// let knapsack = new GreedKnapsack();
 
 const STARS_ATTRIBUTES = [
     { value: 15, weight: 1, color: "starRoxo" },
@@ -76,7 +78,10 @@ function createCollectGame(playerName, accumulateScore, starsAttributes, starsCo
     player.reset(new Coord(28, 1));
 
     return new CollectGame(
-        playerName, accumulateScore, timeout, map, volume, player, inteligentEnemyCoord, enemiesCoords, starsAttributes, starsCount, totalSpace, introDuration
+        playerName, accumulateScore, timeout,
+        map, volume, player, inteligentEnemyCoord,
+        enemiesCoords, starsAttributes, starsCount,
+        totalSpace, introDuration, knapsack,
     )
 }
 
