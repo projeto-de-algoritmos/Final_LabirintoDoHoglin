@@ -1,6 +1,8 @@
 <html>
-<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css" />
+<head>
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+</head>
 
 <body>
     <header>
@@ -11,8 +13,17 @@
         <div id="initialScreen" class="actived">
             <h1>LABIRINTO DO HOGLIN</h1>
             <div>
-                <button onclick="onFreeGame()">Modo Livre</button>
-                <button onclick="onCollectGame()">Modo Coletor</button>
+                <fieldset>
+                    <button onclick="onFreeGame()">Modo Livre</button>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <button onclick="onCollectGame()">Modo Coletor</button>
+                    <div id="collect-algorithms">
+                        <input type="radio" name="collect" id="greed" checked><label for="greed">Ambicioso</label><br/>
+                        <input type="radio" name="collect" id="pd"><label for="pd">Programacao Dinamica</label><br/>
+                    </div>
+                </fieldset>
             </div>
             <img id="hoglin" src="assets/images/hoglin.png" />
         </div>

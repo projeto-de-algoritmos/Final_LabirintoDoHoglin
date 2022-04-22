@@ -10,6 +10,7 @@ function onFreeGame() {
 }
 
 function onCollectGame() {
+    knapsack = getKnapsackAlgorithm();
     playerName = window.prompt(`Insira seu nome:`).toUpperCase();
     disableInitialScreen()
     runCollectGame();
@@ -45,9 +46,7 @@ let accumulateScore = {
 }
 let starsCount = 5;
 let totalSpace = 20;
-
-let knapsack = new PDKnapsack();
-// let knapsack = new GreedKnapsack();
+let knapsack;
 
 const STARS_ATTRIBUTES = [
     { value: 15, weight: 1, color: "starRoxo" },
@@ -60,9 +59,9 @@ const STARS_ATTRIBUTES = [
 function runCollectGame() {
     totalSpace += 10;
     starsCount += 1;
-
     createCollectGame(playerName, accumulateScore, STARS_ATTRIBUTES, starsCount, totalSpace).start();
 }
+
 
 function createCollectGame(playerName, accumulateScore, starsAttributes, starsCount, totalSpace) {
     const inteligentEnemyCoord = new Coord(14, 14);
@@ -83,6 +82,11 @@ function createCollectGame(playerName, accumulateScore, starsAttributes, starsCo
         enemiesCoords, starsAttributes, starsCount,
         totalSpace, introDuration, knapsack,
     )
+}
+
+function getKnapsackAlgorithm(){
+    const algorithm = [...document.querySelectorAll("#collect-algorithms input")].find(i => i.checked).id;
+    return algorithm === 'greed' ? new GreedKnapsack() : new PDKnapsack(); 
 }
 
 function disableInitialScreen() {
