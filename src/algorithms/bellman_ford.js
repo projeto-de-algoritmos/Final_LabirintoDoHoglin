@@ -8,7 +8,7 @@ class NodeWeight {
     }
 }
 
-function bellmanFord(map, startX, startY, findX, findY) {
+function bellmanFord(map, startX, startY, findX, findY, enemies) {
     let edges = new Array();
     let optPath = new Array();
     let changes = true;
@@ -28,6 +28,12 @@ function bellmanFord(map, startX, startY, findX, findY) {
         edges.forEach(edge => {
             getAdjBF(edge.x, edge.y, map).forEach(adj => {
                 let custo = map.getBlock(adj[0], adj[1]) + edge.distance;
+
+                enemies.forEach(enemy => {
+                    if (enemy.x == adj[0] && enemy.y == adj[1])
+                        custo += 50;
+
+                });
 
                 if (edges[map.width * adj[0] + adj[1]].distance > custo) {
                     edges[map.width * adj[0] + adj[1]] = new NodeWeight(custo, adj[0], adj[1], edge.x, edge.y);

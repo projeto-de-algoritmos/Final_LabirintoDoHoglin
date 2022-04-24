@@ -37,10 +37,13 @@ class CollectGame extends Game {
 
     starsPathPaint() {
         let objects = new Array();
+        const enemies = new Array();
+        enemies.push(this.inteligentEnemy, ...this.enemies);
 
         this.bestStars.forEach(star => {
-            objects.push(...bellmanFord(this.map, star.x, star.y, this.player.x, this.player.y));
+            objects.push(...bellmanFord(this.map, star.x, star.y, this.player.x, this.player.y, enemies));
         });
+
         super.paintPath(objects);
     }
 
@@ -113,6 +116,7 @@ class CollectGame extends Game {
 
     removeStar(star) {
         this.stars = this.stars.filter(s => s !== star);
+        this.bestStars = this.bestStars.filter(s => s !== star);
         this.objects = this.objects.filter(o => o !== star)
         this.lightestStar = this.getLightestStar();
     }
