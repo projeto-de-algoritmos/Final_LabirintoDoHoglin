@@ -35,6 +35,15 @@ class CollectGame extends Game {
         super.focusAnimation([...this.bestStars, this.player]);
     }
 
+    starsPathPaint() {
+        let objects = new Array();
+
+        this.bestStars.forEach(star => {
+            objects.push(...bellmanFord(this.map, star.x, star.y, this.player.x, this.player.y));
+        });
+        super.paintPath(objects);
+    }
+
     update() {
         super.update();
         this.inteligentEnemy.update(this.player);
@@ -205,4 +214,6 @@ class CollectGame extends Game {
 
         localStorage.setItem('highscores', JSON.stringify(this.highscores));
     }
+
+
 }

@@ -1,5 +1,5 @@
-class Coord{
-    constructor(x, y){
+class Coord {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
     }
@@ -19,10 +19,12 @@ function hasCollided(obj1, obj2) {
     return obj1.x === obj2.x && obj1.y === obj2.y;
 }
 
-function add(p1, p2){
+function add(p1, p2) {
     return [p1[0] + p2[0], p1[1] + p2[1]]
 }
 
-function equals(x1, y1, x2, y2){
+function equals(x1, y1, x2, y2) {
     return x1 === x2 && y1 === y2;
 }
+
+const ADJ_POINTS = [[1, 0], [0, 1], [-1, 0], [0, -1]];

@@ -9,16 +9,16 @@ class Game {
         this.introDuration = introDuration;
         this.running = false;
         this.kill = false;
-        
+
         this.playRandomSong();
         this.listenKeys();
     }
 
-    start(){
+    start() {
         this.running = true;
         this.render();
         this.startAnimation();
-        setTimeout(() => this.run(), this.introDuration*1000);
+        setTimeout(() => this.run(), this.introDuration * 1000);
     }
 
     run() {
@@ -44,7 +44,7 @@ class Game {
         this.kill = true;
     }
 
-    pause(){
+    pause() {
         this.running = false;
         clearInterval(this.gameUpdate);
     }
@@ -68,7 +68,7 @@ class Game {
         this.playSong(`music${getRandomInt(1, songs + 1)}`)
     }
 
-    focusAnimation(objects){
+    focusAnimation(objects) {
         objects.forEach(o => {
             const cell = this.map.getCellElement(o.x, o.y);
             cell.classList.add("focusAnimation");
@@ -76,15 +76,26 @@ class Game {
         });
     }
 
-    startAnimation(){}
+    paintPath(objects) {
+        objects.forEach(o => {
+            const cell = this.map.getCellElement(o.x, o.y);
+            cell.classList.add("pathColor");
+            cell.style.animationDuration = `${this.introDuration}s`;
+        });
+    }
 
-    listenKeys(){
+    startAnimation() { }
+
+    starsPathPaint() { }
+
+    listenKeys() {
         document.addEventListener('keyup', (event) => {
-            if(this.kill) return;
-            if(event.code == "KeyP"){
+            if (this.kill) return;
+            if (event.code == "KeyP") {
+                this.starsPathPaint();
                 this.pause();
             }
-            if(event.code == "Space" && !this.running){
+            if (event.code == "Space" && !this.running) {
                 this.run();
             }
         }, false);

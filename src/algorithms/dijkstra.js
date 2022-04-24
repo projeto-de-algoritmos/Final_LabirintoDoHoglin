@@ -7,8 +7,8 @@ class ExploredList {
         this.height = height;
     }
 
-    getCost(x, y) {     
-        if(!this.isExplored(x, y))
+    getCost(x, y) {
+        if (!this.isExplored(x, y))
             return Infinity;
         return this.exploreds[this.getIndex(x, y)][0];
     }
@@ -77,8 +77,6 @@ function dijkstra(map, startX, startY, findX, findY) {
         });
     }
 }
-
-const ADJ_POINTS = [[1, 0], [0, 1], [-1, 0], [0, -1]];
 
 function getAdj(x, y, map, explored) {
     points = ADJ_POINTS.map(p => add(p, [x, y]));
